@@ -25,6 +25,14 @@ This part of the workflow usually includes the following steps:
 See Augur's usage docs for these commands for more details.
 """
 
+def as_list(x):
+    if x is None:
+        return []
+    if isinstance(x, (list, tuple)):
+        return list(x)
+    return [x]
+
+
 rule export:
     """Exporting data files for for auspice"""
     input:
@@ -41,6 +49,7 @@ rule export:
         auspice_json = "auspice/prrsv2.json"
     params:
         strain_id = config.get("strain_id_field", "strain"),
+        color_by_metadata = as_list(config["export"]["color_by_metadata"]),
     log:
         "logs/export.txt",
     benchmark:
@@ -55,9 +64,8 @@ rule export:
             --metadata-id-columns {params.strain_id:q} \
             --node-data {input.branch_lengths:q} \
             --auspice-config {input.auspice_config:q} \
-            --color-by-metadata region country division clade coverage divergence nonACGTN QC_missing_data QC_mixed_sites QC_rare_mutations QC_frame_shifts QC_stop_codons \
+            --color-by-metadata {params.color_by_metadata:q} \
             --output {output.auspice_json:q}
-
         """
 
 # --node-data {input.branch_lengths:q} {input.traits:q} {input.nt_muts:q} {input.aa_muts:q} \

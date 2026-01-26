@@ -23,3 +23,21 @@ refine:
 
 export:
   auspice_config: "auspice_config.json"
+  color_by_metadata:
+    - clade
+    - QC_overall_score
+    - QC_overall_status
+    - coverage
+    - missing_data
+    - divergence
+    - nonACGTN
+    - QC_missing_data
+    - QC_mixed_sites
+    - QC_rare_mutations
+    - QC_frame_shifts
+    - QC_stop_codons
+    - frame_shifts
+    - Private_ReversionSubstitutions
+    - Private_LabeledSubstitutions
+    - Private_UnlabeledSubstitutions
+    - Total_PrivateSubstitutions

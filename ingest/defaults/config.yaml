@@ -134,6 +134,8 @@ nextclade:
   field_map:
     seqName: "seqName"
     clade: "clade"
+    qc.overallScore: "QC_overall_score"
+    qc.overallStatus: "QC_overall_status"
     coverage: "coverage"
     totalMissing: "missing_data"
     totalSubstitutions: "divergence"
@@ -144,6 +146,10 @@ nextclade:
     qc.frameShifts.status: "QC_frame_shifts"
     qc.stopCodons.status: "QC_stop_codons"
     frameShifts: "frame_shifts"
+    privateNucMutations.totalReversionSubstitutions: "Private_ReversionSubstitutions"
+    privateNucMutations.totalLabeledSubstitutions: "Private_LabeledSubstitutions"
+    privateNucMutations.totalUnlabeledSubstitutions: "Private_UnlabeledSubstitutions"
+    privateNucMutations.totalPrivateSubstitutions: "Total_PrivateSubstitutions"
   # This is the ID field you would use to match the Nextclade output with the record metadata.
   # This should be the new name that you have defined in your field map.
   id_field: "seqName"

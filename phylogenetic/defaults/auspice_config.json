@@ -29,6 +29,36 @@
       "type": "categorical"
     },
     {
+      "key": "QC_overall_score",
+      "title": "QC_overall_score",
+      "type": "continuous"
+    },
+    {
+      "key": "QC_overall_status",
+      "title": "QC_overall_status",
+      "type": "categorical"
+    },
+    {
+      "key": "Total_PrivateSubstitutions",
+      "title": "Total_PrivateSubstitutions",
+      "type": "continuous"
+    },
+    {
+      "key": "Private_ReversionSubstitutions",
+      "title": "Private_ReversionSubstitutions",
+      "type": "continuous"
+    },
+    {
+      "key": "Private_LabeledSubstitutions",
+      "title": "Private_LabeledSubstitutions",
+      "type": "continuous"
+    },
+    {
+      "key": "Private_UnlabeledSubstitutions",
+      "title": "Private_UnlabeledSubstitutions",
+      "type": "continuous"
+    },
+    {
       "key": "divergence",
       "title": "divergence",
       "type": "continuous"
