@@ -130,37 +130,6 @@ rule format_ncbi_dataset_report:
             > {output.ncbi_dataset_tsv:q}
         """
 
-
-###########################################################################
-########################## 2. Fetch from Entrez ###########################
-###########################################################################
-
-
-rule fetch_from_ncbi_entrez:
-    params:
-        term=config["entrez_search_term"],
-    output:
-        genbank="data/genbank.gb",
-    # Allow retries in case of network errors
-    retries: 5
-    benchmark:
-        "benchmarks/fetch_from_ncbi_entrez.txt"
-    log:
-        "logs/fetch_from_ncbi_entrez.txt",
-    shell:
-        r"""
-        exec &> >(tee {log:q})
-
-        {workflow.basedir}/../shared/vendored/scripts/fetch-from-ncbi-entrez \
-            --term {params.term:q} \
-            --output {output.genbank:q}
-        """
-
-
-# If you are using additional Entrez data, add additional rules here for parsing
-# the Entrez results and merging with the ncbi_dataset_report.tsv
-# Remember to edit the `ncbi_dataset_tsv` input below to use the new merged TSV.
-
 ###########################################################################
 ###################### 3. Produce final output NDJSON #####################
 ###########################################################################
