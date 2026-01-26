@@ -1,0 +1,66 @@
+{
+  "title": "PRRSV-2",
+  "maintainers": [
+    {
+      "name": "Name",
+      "url": "https://github.com/j23414/prrsv.git"
+    }
+  ],
+  "build_url": "https://github.com/j23414/prrsv",
+  "colorings": [
+    {
+      "key": "gt",
+      "title": "Genotype",
+      "type": "categorical"
+    },
+    {
+      "key": "region",
+      "title": "Region",
+      "type": "categorical"
+    },
+    {
+      "key": "country",
+      "title": "Country",
+      "type": "categorical"
+    },
+    {
+      "key": "clade",
+      "title": "clade",
+      "type": "categorical"
+    },
+    {
+      "key": "divergence",
+      "title": "divergence",
+      "type": "continuous"
+    }
+  ],
+  "geo_resolutions": [
+    "country",
+    "region"
+  ],
+  "filters": [
+    "country"
+  ],
+  "display_defaults": {
+    "distance_measure": "div",
+    "color_by": "clade",
+    "layout": "unrooted",
+    "panels": [
+      "tree",
+      "map"
+    ]
+  },
+  "panels": [
+    "tree",
+    "map"
+  ],
+  "metadata_columns": [
+    "authors",
+    "institution",
+    "date",
+    "date_released",
+    "date_updated",
+    "host",
+    "strain"
+  ]
+}

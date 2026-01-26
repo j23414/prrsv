@@ -3,3 +3,23 @@
 #
 # Define optional config parameters with their default values here so that users
 # do not have to dig through the workflows to figure out the default values
+inputs:
+  - name: ncbi
+    metadata: "../ingest/results/metadata.tsv"
+    sequences: "../ingest/results/sequences.fasta"
+
+reference: "reference.fasta"
+strain_id_field: "accession"
+
+filter:
+  exclude: "exclude.txt"
+  include: "include.txt"
+  min_length: 600
+
+refine:
+  coalescent: "opt"
+  date_inference: "marginal"
+  clock_filter_iqd: 4
+
+export:
+  auspice_config: "auspice_config.json"

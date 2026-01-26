@@ -24,3 +24,40 @@ This part of the workflow usually includes the following steps:
 
 See Augur's usage docs for these commands for more details.
 """
+
+rule export:
+    """Exporting data files for for auspice"""
+    input:
+        tree = "results/tree.nwk",
+        metadata = "results/metadata.tsv",
+        branch_lengths = "results/branch_lengths.json",
+        #traits = "results/traits.json",
+        #nt_muts = "results/nt_muts.json",
+        #aa_muts = "results/aa_muts.json",
+        #colors = resolve_config_path(config["colors"]),
+        auspice_config = resolve_config_path(config["export"]["auspice_config"]),
+        #description = resolve_config_path(config["description"]),
+    output:
+        auspice_json = "auspice/prrsv2.json"
+    params:
+        strain_id = config.get("strain_id_field", "strain"),
+    log:
+        "logs/export.txt",
+    benchmark:
+        "benchmarks/export.txt"
+    shell:
+        r"""
+        exec &> >(tee {log:q})
+
+        augur export v2 \
+            --tree {input.tree:q} \
+            --metadata {input.metadata:q} \
+            --metadata-id-columns {params.strain_id:q} \
+            --node-data {input.branch_lengths:q} \
+            --auspice-config {input.auspice_config:q} \
+            --color-by-metadata region country division clade coverage divergence nonACGTN QC_missing_data QC_mixed_sites QC_rare_mutations QC_frame_shifts QC_stop_codons \
+            --output {output.auspice_json:q}
+
+        """
+
+# --node-data {input.branch_lengths:q} {input.traits:q} {input.nt_muts:q} {input.aa_muts:q} \
